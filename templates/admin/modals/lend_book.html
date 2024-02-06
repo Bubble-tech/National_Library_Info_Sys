@@ -1,0 +1,48 @@
+<!-- Lend Book Modal -->
+<div class="modal fade" id="lend-book-modal-{{ book['_id'] }}" tabindex="-1" role="dialog" aria-labelledby="lendBookModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lendBookModalLabel">Lend Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for lending/returning book -->
+                <form action="{{ url_for('lend_book', book_id=book['_id']) }}" method="post">
+                    <!-- Common Fields -->
+                    <input type="hidden" name="book_id" value="{{ book['_id'] }}" />
+
+                    <!-- Membership ID for borrowing -->
+                    <div class="form-group">
+                        <label for="membership_id">Membership ID</label>
+                        <input type="text" class="form-control" name="membership_id" required />
+                    </div>
+
+                >
+                    <div class="form-group">
+                        <label for="due_date">Due Date</label>
+                        <input type="date" class="form-control" name="due_date" required />
+                    </div>
+
+                    <!-- Return Condition for returning -->
+                    <div class="form-group">
+                        <label for="return_condition">Return Condition</label>
+                        <input type="text" class="form-control" name="return_condition" />
+                    </div>
+
+                    
+
+                    
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+

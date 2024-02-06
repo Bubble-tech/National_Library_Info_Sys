@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "65c0b0644b763fe73e2c50d0"
+  },
+  "name": "Esther Phale",
+  "contact_details": {
+    "postal_address": "P.O.Box 303117 Lilongwe Malawi",
+    "physical_address": "Area 51 street 3"
+  },
+  "enrollment_date": "2024-02-05",
+  "status": "active",
+  "lending_behavior": {
+    "overdue_occurrences": 0,
+    "lending_preferences": ""
+  }
+},
+{
+  "_id": {
+    "$oid": "65c0b83c360c14b86c20355e"
+  },
+  "name": "essie phale",
+  "contact_details": {
+    "postal_address": "wallaby",
+    "physical_address": "elober"
+  },
+  "enrollment_date": "2024-02-05",
+  "status": "active",
+  "lending_behavior": {
+    "overdue_occurrences": 0,
+    "lending_preferences": ""
+  }
+}]

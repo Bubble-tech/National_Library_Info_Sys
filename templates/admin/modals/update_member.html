@@ -1,0 +1,36 @@
+<!-- Modal for updating a member -->
+<div class="modal fade" id="update-member-modal-{{ member['_id'] }}" tabindex="-1" role="dialog" aria-labelledby="updateMemberModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateMemberModalLabel">Update Member</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('update_member', member_id=member['_id']) }}" method="post">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" value="{{ member['name'] }}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Postal Address</label>
+                        <input type="text" class="form-control" name="postal_address" value="{{ member['contact_details']['postal_address'] }}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Physical Address</label>
+                        <input type="text" class="form-control" name="physical_address" value="{{ member['contact_details']['physical_address'] }}" required />
+                    </div>
+
+                    
+
+                    <input type="hidden" name="_method" value="PUT">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<!-- Modal for deleting a member -->
+<div class="modal fade" id="delete-member-modal-{{ member['_id'] }}" tabindex="-1" role="dialog" aria-labelledby="deleteMemberModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteMemberModalLabel">Delete Member</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this member?</p>
+                <form action="{{ url_for('delete_member', member_id=member['_id']) }}" method="post">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

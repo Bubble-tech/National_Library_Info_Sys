@@ -1,0 +1,44 @@
+<!-- Modal for adding staff -->
+<div class="modal fade" id="add-staff-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h3 class="text-center title" id="staticBackdropLabel">
+          Add Staff Member
+        </h3>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{ url_for('add_staff') }}" method="post">
+
+          <label>Qualification</label>
+          <input type="text" class="form-control" name="qualification" required /><br />
+
+          <label>Experience</label>
+          <input type="text" class="form-control" name="experience" required /><br />
+
+          <label>Skill Set</label>
+          <input type="text" class="form-control" name="skill_set" required /><br />
+
+          <label>Grades</label>
+          <input type="text" class="form-control" name="grades" required /><br />
+
+          <label>Contact Information</label>
+          <input type="text" class="form-control" name="contact_info" required /><br />
+
+          <label>Role</label>
+          <input type="text" class="form-control" name="role" required /><br />
+
+          <label>Staff ID</label>
+          <input type="text" class="form-control" name="staff_id" /><br />
+
+          <label>Password</label>
+          <input type="password" class="form-control" name="password" /><br />
+
+
+          <button class="btn-blue">Add Staff</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

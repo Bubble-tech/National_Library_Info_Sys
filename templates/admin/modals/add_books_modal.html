@@ -1,0 +1,76 @@
+<!-- Modal for adding a book -->
+<div class="modal fade" id="add-book-modal" tabindex="-1" role="dialog" aria-labelledby="addBookModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addBookModalLabel">Add Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+                <form action="{{ url_for('add_book') }}" method="post">
+                    <!-- Add form fields for book details (title, author, genre, etc.) -->
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="title" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Author</label>
+                        <input type="text" class="form-control" name="author" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Genre</label>
+                        <input type="text" class="form-control" name="genre" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Format</label>
+                        <input type="text" class="form-control" name="format" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Availability</label>
+                        <select class="form-control" name="availability" required>
+                            <option value="available">Available</option>
+                            <option value="unavailable">Unavailable</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cataloging Date</label>
+                        <input type="date" class="form-control" name="cataloging_date" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cataloging Personnel</label>
+                        <input type="text" class="form-control" name="cataloging_personnel" required />
+                    </div>
+
+                    <!-- Reminder Configuration -->
+                    <div class="form-group">
+                        <label>Almost Due Reminder (Days)</label>
+                        <input type="number" class="form-control" name="almost_due" value="3" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Past Due Reminder (Days)</label>
+                        <input type="number" class="form-control" name="past_due" value="1" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Overdue Reminder (Days)</label>
+                        <input type="number" class="form-control" name="overdue" value="7" required />
+                    </div>
+
+                    <!-- Add more form fields as needed -->
+
+                    <button type="submit" class="btn btn-primary">Add Book</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

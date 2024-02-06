@@ -1,0 +1,96 @@
+<!-- admin/modals/update_staff_modal.html -->
+
+<div
+  class="modal fade"
+  id="update-staff-modal-{{ staff['staff_id'] }}"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h3 class="text-center title" id="staticBackdropLabel">
+          Update Staff Member
+        </h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        {% if update_success %}
+          <div class="alert alert-success">
+            Staff member updated successfully!
+          </div>
+        {% endif %}
+        {% if update_error %}
+          <div class="alert alert-danger">
+            Error updating staff member. Please try again.
+          </div>
+        {% endif %}
+        <form
+          action="{{ url_for('update_staff', staff_id=staff['staff_id']) }}"
+          method="post"
+        >
+          
+          <label>Qualification</label>
+          <input
+            type="text"
+            class="form-control"
+            name="qualification"
+            value="{{ staff['qualification'] }}"
+          /><br />
+
+          <label>Experience</label>
+          <input
+            type="text"
+            class="form-control"
+            name="experience"
+            value="{{ staff['experience'] }}"
+          /><br />
+
+          <label>Skill Set</label>
+          <input
+            type="text"
+            class="form-control"
+            name="skill_set"
+            value="{{ staff['skill_set'] }}"
+          /><br />
+
+          <label>Grades</label>
+          <input
+            type="text"
+            class="form-control"
+            name="grades"
+            value="{{ staff['grades'] }}"
+          /><br />
+
+          <label>Contact Information</label>
+          <input
+            type="text"
+            class="form-control"
+            name="contact_info"
+            value="{{ staff['contact_info'] }}"
+          /><br />
+
+          <label>Role</label>
+          <input
+            type="text"
+            class="form-control"
+            name="role"
+            value="{{ staff['role'] }}"
+          /><br />
+
+          <!-- Add other fields for updating staff information -->
+
+          <button class="btn btn-primary">Update Staff</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

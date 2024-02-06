@@ -1,0 +1,39 @@
+[{
+  "_id": {
+    "$oid": "65be3c55cb9467be3f406f1f"
+  },
+  "qualification": "bsc",
+  "experience": "health",
+  "skill_set": "python",
+  "grades": "123",
+  "contact_info": "0993848493",
+  "role": "librarian",
+  "staff_id": "1",
+  "password": "pbkdf2:sha256:600000$B8b8ErzGqYq9Krto$d597f8f990c5da27df7737c6c86322b75a6f4e74ea946ade4933127a12b0ff4f"
+},
+{
+  "_id": {
+    "$oid": "65be4c00112d4b74901c7c5e"
+  },
+  "qualification": "bsc tech",
+  "experience": "3 years",
+  "skill_set": "php",
+  "grades": "345",
+  "contact_info": "0983672533",
+  "role": "librarian",
+  "staff_id": "2",
+  "password": "pbkdf2:sha256:600000$fOmuK6kr0g0d8ume$4afc9cc9f40a6997a3531a8abdb2a361984521a0ee25320658778d28e3cccb57"
+},
+{
+  "_id": {
+    "$oid": "65c0986498c055f52b80d6f9"
+  },
+  "qualification": "bsc computing",
+  "experience": "4 years",
+  "skill_set": "php",
+  "grades": "345",
+  "contact_info": "0984747948",
+  "role": "librarian",
+  "staff_id": "3",
+  "password": "pbkdf2:sha256:600000$1QdbQoIWD9qcsAR0$7dfae05aeff3b4b1e10f3f9e01933b027b428b12d64adeab72c12dd9aaca2a6d"
+}]

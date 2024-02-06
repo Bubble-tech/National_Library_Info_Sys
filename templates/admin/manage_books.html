@@ -1,0 +1,118 @@
+
+{% include 'style.html' %}
+{% include 'js.html' %}
+{% include 'admin/modals/add_books_modal.html' %}
+
+
+{% include 'admin/header.html' %}
+
+<!-- Main content -->
+<div class="container mt-4">
+    <h2>Manage Books</h2>
+
+    <!-- Button to add a new book -->
+    <button class="btn btn-primary" data-toggle="modal" data-target="#add-book-modal">
+        Add Book
+    </button>
+
+   <!-- Table to display books -->
+   <table class="table table-bordered table-hover mt-4" style="background-color: #eff7ff;">
+    <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Format</th>
+            <th>Cataloging Date</th>
+            <th>Cataloging Personnel</th>
+            <th>Almost Due Reminder</th>
+            <th>Past Due Reminder</th>
+            <th>Overdue Reminder</th>
+            <th>Availability</th>
+            
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in book_data %}
+            <tr>
+                
+                <td>{{ book['title'] }}</td>
+                <td>{{ book['author'] }}</td>
+                <td>{{ book['genre'] }}</td>
+                <td>{{ book['format'] }}</td>
+                <td>{{ book.get('cataloging_date', 'N/A') }}</td>
+                <td>{{ book.get('cataloging_personnel', 'N/A') }}</td>
+                <td>{{ book.get('reminder_config', {}).get('almost_due', 'N/A') }} days</td>
+                <td>{{ book.get('reminder_config', {}).get('past_due', 'N/A') }} days</td>
+                <td>{{ book.get('reminder_config', {}).get('overdue', 'N/A') }} days</td>
+                <td>{{ book['availability'] }}</td>
+                <td>
+                    {% if book.get('lending_info') %}
+                        {% if book['lending_info']['current_borrower'] %}
+                            Borrowed by: {{ book['lending_info']['current_borrower'] }}<br>
+                            Due Date: {{ book['lending_info']['due_date'] }}<br>
+                            Return Condition: {{ book['lending_info']['return_condition'] }}
+                        {% else %}
+                            Available for borrowing
+                        {% endif %}
+                    {% else %}
+                        No lending information available
+                    {% endif %}
+                </td>
+                
+               
+            <td>
+                <!-- Button to handle book lending process -->
+                <button class="btn btn-success" data-toggle="modal" data-target="#lend-book-modal-{{ book['_id'] }}">
+                    Lend
+                </button>
+            </td>
+
+    
+                <td>
+                    <!-- Button to update a book -->
+                    <button
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#update-book-modal-{{ book['_id'] }}"
+                  >
+                    Update
+                  </button>
+                  <button
+                    class="btn btn-danger"
+                    data-toggle="modal"
+                    data-target="#delete-book-modal-{{ book['_id'] }}"
+                  >
+                    Delete
+                  </button>
+                </td>
+            </tr>
+            <!-- Include modals for adding, updating, and deleting books -->
+        
+         {% include 'admin/modals/update_book_modal.html' %}
+         {% include 'admin/modals/delete_book_modal.html' %}
+        {% endfor %}
+    </tbody>
+</table>
+
+
+</div>
+</body>
+</html>
+
+
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
+
+

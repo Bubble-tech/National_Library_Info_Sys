@@ -1,0 +1,152 @@
+<html>
+  <head>
+    {% include 'style.html'%}
+    {% include 'admin/modals/add_staff.html'%}
+    {% include 'js.html'%}
+  </head>
+  <body class="bg-light">
+    {% include 'admin/header.html'%}
+    <div class="container">
+      <!-- Show alerts here -->
+
+      <div class="d-flex justify-content-end mt-4 mb-1">
+        <button
+          class="btn-bordered-blue shadow"
+          data-toggle="modal"
+          data-target="#add-staff-modal"
+        >
+          + Add Staff
+        </button>
+      </div>
+
+      <!-- Modal for adding staff -->
+      <div
+        class="modal fade"
+        id="add-staff-modal"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header border-0">
+              <h3 class="text-center title" id="staticBackdropLabel">
+                Add Staff Member
+              </h3>
+              <button
+                type="button"
+                class="btn-close"
+                data-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form
+                action="/admin/modals/add_staff"
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <label>Qualification</label>
+                <input type="text" class="form-control" name="qualification" /><br />
+
+                <label>Experience</label>
+                <input type="text" class="form-control" name="experience" /><br />
+
+                <label>Skill Set</label>
+                <input type="text" class="form-control" name="skill_set" /><br />
+
+                <label>Grades</label>
+                <input type="text" class="form-control" name="grades" /><br />
+
+                <label>Contact Information</label>
+                <input type="text" class="form-control" name="contact_info" /><br />
+
+                <label>Role</label>
+                <input type="text" class="form-control" name="role" /><br />
+
+                <label>Staff ID</label>
+                <input type="text" class="form-control" name="staff_id" /><br />
+
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" /><br />
+
+                <button class="btn-blue">Add Staff</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of modal for adding staff -->
+      <!-- staff.html -->
+
+    <!-- ... (existing code) ... -->
+
+<div class="container">
+  <h2 class="mt-4 mb-4">Manage Staff</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Qualification</th>
+          <th>Experience</th>
+          <th>Skill Set</th>
+          <th>Grades</th>
+          <th>Contact Information</th>
+          <th>Role</th>
+          <th>Staff ID</th>
+          <th>Action</th> <!-- New column for action buttons -->
+        </tr>
+      </thead>
+      <tbody>
+        {% for staff in staff_data %}
+          <tr>
+            <td>{{ staff['qualification'] }}</td>
+            <td>{{ staff['experience'] }}</td>
+            <td>{{ staff['skill_set'] }}</td>
+            <td>{{ staff['grades'] }}</td>
+            <td>{{ staff['contact_info'] }}</td>
+            <td>{{ staff['role'] }}</td>
+            <td>{{ staff['staff_id'] }}</td>
+            <td>
+              <button
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#update-staff-modal-{{ staff['staff_id'] }}"
+              >
+                Update
+              </button>
+              <button
+                class="btn btn-danger"
+                data-toggle="modal"
+                data-target="#delete-staff-modal-{{ staff['staff_id'] }}"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+
+          <!-- Include the update and delete modals for each staff member -->
+          {% include 'admin/modals/update_staff_modal.html' %}
+          {% include 'admin/modals/delete_staff_modal.html' %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+    </div>
+  </body>
+</html>
+
+
+      <!-- Table for displaying staff details (if applicable) -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

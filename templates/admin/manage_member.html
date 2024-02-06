@@ -1,0 +1,73 @@
+<!-- manage_members.html -->
+
+<!-- Include necessary styles and scripts -->
+{% include 'style.html' %}
+{% include 'js.html' %}
+{% include 'admin/modals/add_member.html' %}
+
+<!-- Include the admin header -->
+{% include 'admin/header.html' %}
+
+<!-- Main content -->
+<div class="container mt-4">
+    <h2>Manage Members</h2>
+
+    <!-- Button to add a new member -->
+    <button class="btn btn-primary" data-toggle="modal" data-target="#add-member-modal">
+        Add Member
+    </button>
+
+    
+
+<h2>Members</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Postal Address</th>
+            <th>Physical Address</th>
+            <th>Enrollment Date</th>
+            <th>Status</th>
+            <th>Overdue Occurrences</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in member_data %}
+            <tr>
+                <td>{{ member['name'] }}</td>
+                <td>{{ member['contact_details']['postal_address'] }}</td>
+                <td>{{ member['contact_details']['physical_address'] }}</td>
+                <td>{{ member['enrollment_date'] }}</td>
+                <td>{{ member['status'] }}</td>
+                <td>{{ member['lending_behavior']['overdue_occurrences'] }}</td>
+                <td>{{ member['lending_behavior']['overdue_occurrences'] }}</td>
+                <td>{{ member['lending_behavior']['lending_preferences'] }}</td>
+                
+                <!-- New section to display lending transactions -->
+                <td>
+                    <ul>
+                        {% for transaction in member['lending_behavior']['transactions'] %}
+                            <li>{{ transaction['book_title'] }} - Due: {{ transaction['due_date'] }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+
+{% include 'admin/modals/add_member.html' %}
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

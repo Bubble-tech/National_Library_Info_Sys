@@ -1,0 +1,32 @@
+<!-- Include necessary styles and scripts -->
+{% include 'style.html' %}
+{% include 'js.html' %}
+
+<!-- Include the admin header -->
+{% include 'admin/header.html' %}
+
+<!-- Main content -->
+<div class="container mt-4">
+    <h2>Borrow Book</h2>
+
+    <form action="{{ url_for('borrow_book') }}" method="post">
+        
+        <label>Member ID</label>
+        <input type="text" class="form-control" name="member_id" required /><br />
+
+        <label>Book IDs (comma-separated)</label>
+        <input type="text" class="form-control" name="book_ids" required /><br />
+
+        <button type="submit" class="btn btn-primary">Borrow</button>
+    </form>
+</div>
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
+</body>
+</html>

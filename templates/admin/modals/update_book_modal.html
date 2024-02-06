@@ -1,0 +1,74 @@
+<!-- Modal for updating a book -->
+<div class="modal fade" id="update-book-modal-{{ book['_id'] }}" tabindex="-1" role="dialog" aria-labelledby="updateBookModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateBookModalLabel">Update Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('update_book', book_id=book['_id']) }}" method="post">
+                    <!-- Include fields for updating book information -->
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="title" value="{{ book['title'] }}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Author</label>
+                        <input type="text" class="form-control" name="author" value="{{ book['author'] }}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Genre</label>
+                        <input type="text" class="form-control" name="genre" value="{{ book['genre'] }}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Format</label>
+                        <input type="text" class="form-control" name="format" value="{{ book['format'] }}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Availability</label>
+                        <select class="form-control" name="availability" required>
+                            <option value="available" {% if book['availability'] == 'available' %}selected{% endif %}>Available</option>
+                            <option value="unavailable" {% if book['availability'] == 'unavailable' %}selected{% endif %}>Unavailable</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cataloging Date</label>
+                        <input type="date" class="form-control" name="cataloging_date" value="{{ book['cataloging_date'] }}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cataloging Personnel</label>
+                        <input type="text" class="form-control" name="cataloging_personnel" value="{{ book['cataloging_personnel'] }}" required />
+                    </div>
+
+                    <!-- Reminder Configuration -->
+                    <div class="form-group">
+                        <label>Almost Due Reminder (Days)</label>
+                        <input type="number" class="form-control" name="almost_due" value="{{ book.get('reminder_config', {}).get('almost_due', 3) }}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Past Due Reminder (Days)</label>
+                        <input type="number" class="form-control" name="past_due" value="{{ book.get('reminder_config', {}).get('past_due', 1) }}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Overdue Reminder (Days)</label>
+                        <input type="number" class="form-control" name="overdue" value="{{ book.get('reminder_config', {}).get('overdue', 7) }}" required />
+                    </div>
+
+                    <!-- Add more fields as needed -->
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
